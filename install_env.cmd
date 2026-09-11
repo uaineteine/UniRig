@@ -5,7 +5,7 @@ set "VENV_DIR=%~dp0.venv"
 set "PYTHON_VERSION=3.11"
 set "TORCH_VERSION=2.14.0"
 set "CUDA_VERSION=cu132"
-set "CPU_ONLY=1"
+set "CPU_ONLY=0"
 
 if not exist "%VENV_DIR%\Scripts\python.exe" (
 	py -%PYTHON_VERSION% -m venv "%VENV_DIR%"
@@ -31,7 +31,9 @@ if /I "%CPU_ONLY%"=="1" (
 )
 if errorlevel 1 exit /b 1
 
+uv pip install -r "%~dp0reqs\requirements_build_tools.txt" --no-build-isolation
 uv pip install -r "%~dp0reqs\requirements_general.txt" --no-build-isolation
+uv pip install -r "%~dp0reqs\requirements_ml.txt" --no-build-isolation
 if errorlevel 1 exit /b 1
 
 echo Environment setup complete: %VENV_DIR%

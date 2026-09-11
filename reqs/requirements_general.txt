@@ -1,13 +1,3 @@
-#ml
-transformers==4.51.3
-pytorch_lightning
-lightning
-einops
-huggingface_hub
-timm
-flash_attn
-wandb
-
 #config
 addict
 python-box
