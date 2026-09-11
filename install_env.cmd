@@ -31,7 +31,7 @@ if /I "%CPU_ONLY%"=="1" (
 )
 if errorlevel 1 exit /b 1
 
-uv pip install -r "%~dp0reqs\requirements_general.txt"
+uv pip install -r "%~dp0reqs\requirements_general.txt" --no-build-isolation
 if errorlevel 1 exit /b 1
 
 echo Environment setup complete: %VENV_DIR%
